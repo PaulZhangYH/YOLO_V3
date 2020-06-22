@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b38cdc3f-d92e-4d97-9ab4-3246978a756b" name="Default Changelist" comment="" />
+    <list default="true" id="b38cdc3f-d92e-4d97-9ab4-3246978a756b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/datasets/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/letter_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/refine_box.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/YOLO_V3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/YOLO_V3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,15 +19,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loss_function/loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1682">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="-1183">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/datasets/dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
-                <element signature="e#338#693#0" />
-                <element signature="e#1777#4896#0" />
+                <element signature="e#1#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/refine_box.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/letter_image.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -44,10 +75,13 @@
         <option value="$PROJECT_DIR$/model/darknet.py" />
         <option value="$PROJECT_DIR$/model/yolo3.py" />
         <option value="$PROJECT_DIR$/loss_function/loss.py" />
+        <option value="$PROJECT_DIR$/utils/refine_box.py" />
+        <option value="$PROJECT_DIR$/utils/letter_image.py" />
+        <option value="$PROJECT_DIR$/datasets/dataset.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="665" />
     <option name="y" value="23" />
     <option name="width" value="775" />
@@ -58,7 +92,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -66,10 +99,16 @@
               <item name="YOLO_V3" type="b2602c69:ProjectViewProjectNode" />
               <item name="YOLO_V3" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="YOLO_V3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YOLO_V3" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -132,17 +171,18 @@
       <updated>1592623566921</updated>
       <workItem from="1592623570429" duration="679000" />
       <workItem from="1592633530968" duration="9562000" />
+      <workItem from="1592833766240" duration="2181000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10241000" />
+    <option name="totallyTimeSpent" value="12422000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="665" y="23" width="775" height="797" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1377899" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15665236" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -213,11 +253,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loss_function/loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1682">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="-1183">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/letter_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/refine_box.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
-            <element signature="e#338#693#0" />
-            <element signature="e#1777#4896#0" />
+            <element signature="e#1#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
