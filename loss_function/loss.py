@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import bbox_iou
+from utils.bbox_iou import bbox_iou
 
 
 def MSELoss(pred, target):
