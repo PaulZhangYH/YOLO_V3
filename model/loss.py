@@ -58,7 +58,7 @@ class YOLOLoss(nn.Module):
         # 找到哪些先验框内部包含物体
         mask, noobj_mask, tx, ty, tw, th, tconf, tcls, box_loss_scale_x, box_loss_scale_y = self.get_target(target, scaled_anchors, in_w, in_h)
 
-        noobj_mask = self.get_ignore()
+        noobj_mask = self.get_ignore(target, self.anchors, in_w, in_h)
 
         if torch.cuda.is_available():
             box_loss_scale_x = box_loss_scale_x.cuda()
@@ -205,10 +205,6 @@ class YOLOLoss(nn.Module):
                 noobj_mask[i][anch_ious > self.ignore_threshold] = 0
                 # print(torch.max(anch_ious))
         return noobj_mask
-
-
-
-
 
 
 
