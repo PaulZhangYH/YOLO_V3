@@ -5,18 +5,6 @@ from utils.letter_image import refine_image
 from utils.refine_box import refine_box
 import numpy as np
 
-"""修改collate_fn，以适应边界框数量不同的targets"""
-def collate_fn(batch):
-    img, targets = zip(*batch) # transposed
-    maxLen = 0
-    for i in range(len(targets)):
-        maxLen = max(maxLen, len(targets[i]))
-    padding_element = np.array([0., 0., 0., 0., 0.])
-    for target in targets:
-        num_padding = maxLen - len(target)
-        for i in range(num_padding):
-            target = np.append(target, padding_element)
-    return np.array(img), np.array(targets)
 
 class Datasets(Dataset):
     def __init__(self, file_path):
@@ -38,34 +26,36 @@ class Datasets(Dataset):
 
 
 
-    def __getitem__(self, index):
-        image_path = self.image[index]
-        targets = self.target[index]
-
+    def __getitem__(self, item):
+        image_path = self.image[item]
+        targets = self.target[item]
         boxes = []
         labels = []
-
         for target in targets:
-            splited = target.split(',')
+            splited =  target.split(',')
             box = splited[0:4]
-            cls = splited[4:]
+            label = splited[4:]
             boxes.append(box)
-            labels.append(cls)
+            labels.append(label)
 
         image = Image.open(image_path)
-        h, w, _ = image.shape
-        image = refine_image(image)
-        image = np.transpose(np.array(image) / 255., (2, 0, 1))
-        boxes = refine_box(boxes)
+        w, h = image.size
+        # if self.train:
+        #     image, boxes = random_blur(image, boxes)
 
-        boxes[..., 0] = boxes[..., 0] / w
-        boxes[..., 1] = boxes[..., 1] / h
+        image = refine_image(image, 416)
+        image = np.transpose(np.array(image)/255., (2,0,1))
+
+        # 边界框中心、归一化
+        boxes = refine_box(boxes)
+        boxes = np.array(boxes)
+        boxes[..., 0] = boxes[..., 0] / h
+        boxes[..., 1] = boxes[..., 1] / w
         boxes[..., 2] = boxes[..., 2] / w
         boxes[..., 3] = boxes[..., 3] / h
-        label = np.array(labels, dtype=int)
-        targets = np.concatenate([boxes, label], 1)
+        labels = np.array(labels, dtype=int)
+        targets = np.concatenate([boxes, labels], 1)
         return image, targets
-
 
     def __len__(self):
         return self.sample

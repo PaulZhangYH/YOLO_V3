@@ -2,32 +2,26 @@ import numpy as np
 import time
 import torch
 from torch.autograd import Variable
-import torch.nn as nn
 import torch.optim as optim
-import torch.nn.functional as F
-from model.yoloLoss import YOLOLoss
-from model.yolo import YoloBody
-from utils.config import Config
-from dataset.datasets import MaskData
+from model.loss import YOLOLoss
+from model.yolo3 import YoloBody
+from utils.Config import Config
+from datasets.dataset import Datasets
 from torch.utils.data import DataLoader
-from dataset.datasets import collate_fn
-from tqdm import tqdm
+from datasets.collate_fn import collate_fn
 
 
 Cuda = True if torch.cuda.is_available() else False
 
-def train(Epoch,Batch_Size, **kwargs):
+def train(Epoch, Batch_Size, **kwargs):
 
     model = YoloBody(Config)
-    train_data = MaskData("/Users/paulzyh/Desktop/yolo3/train.txt", train=True)
-    # val_data = MaskData("val_file_path", train=False)
+    train_data = Datasets("/Users/paulzyh/Desktop/yolo3/train.txt")
     train_dataloader = DataLoader(train_data, batch_size=Batch_Size, shuffle=True, collate_fn=collate_fn, num_workers=2)
-    # val_dataloader = DataLoader(val_data, batch_size=Batch_Size, shuffle=True, num_workers=2)
 
     epoch_size = train_data.__len__() // Batch_Size
-    # epoch_size_val = val_data.__len__() // Batch_Size
 
-    learning_rate = 1e-4
+    learning_rate = 1e-2
     optimizer = optim.Adam(model.parameters(), learning_rate)
 
     #loss_function
@@ -37,8 +31,6 @@ def train(Epoch,Batch_Size, **kwargs):
                                     Config["yolo"]["classes"], (Config["img_w"], Config["img_h"]), Cuda))
 
     train_loss = 0
-    # val_loss = 0
-
     loss_curve = []
     for epoch in range(Epoch):
         start_time = time.time()
@@ -71,5 +63,6 @@ def train(Epoch,Batch_Size, **kwargs):
             loss_curve.append(train_loss)
     torch.save(model.state_dict(), "yolo3_mask_detection.pth")
 
+
 if __name__ == '__main__':
-    train(1, 4)
+    train(10, 4)
